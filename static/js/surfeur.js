@@ -12,7 +12,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 })
     .addTo(postalMap)
     .bindPopup("Emplacement: " + item.postal + ", " + item.count + " personnes, " + dist + " km");*/
-var postalMap = L.map("mapPollution").setView([45.64325, 5.8720], 10);
+var postalMap = L.map("mapPollution").setView([45.64325, 5.8720], 5);
 
 L.circle([45, 6], {
     color: "#ff0000",
