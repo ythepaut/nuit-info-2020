@@ -1,9 +1,10 @@
 module.exports = class {
 
-    constructor(app, express, path) {
+    constructor(app, express, path, db) {
         this._app = app;
         this._express = express;
         this._path = path;
+        this._db = db;
         this.initializeRoutes();
     }
 
