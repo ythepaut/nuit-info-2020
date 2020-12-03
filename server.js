@@ -14,6 +14,3 @@ new (require("./helper/service"))(app, express, path);
 server.listen(process.env.PORT || 80, () => {
     console.log(`Server is now listening on port ${process.env.PORT || 80}...`);
 });
-
-app.use(express.urlencoded({extended: true}));
-app.use("/", express.static(__dirname + "/static"));
