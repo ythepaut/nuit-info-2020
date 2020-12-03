@@ -3,7 +3,7 @@ module.exports = (callback) => {
     const MongoClient = require("mongodb").MongoClient;
 
     MongoClient.connect(
-        `mongodb://readonly:${process.env.DB_PASSWORD}@localhost:27017/db`,//TODO replace db name
+        `mongodb://readonly:${process.env.DB_PASSWORD}@localhost:27017/NuitInfo`,
         {useUnifiedTopology : true},
         (err, client) => {
             if (err) {
@@ -11,7 +11,7 @@ module.exports = (callback) => {
                 console.log(err);
                 callback(null);
             } else {
-                callback(client.db("db"));//TODO replace db name
+                callback(client.db("NuitInfo"));
             }
         }
     );
