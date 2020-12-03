@@ -12,7 +12,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 })
     .addTo(postalMap)
     .bindPopup("Emplacement: " + item.postal + ", " + item.count + " personnes, " + dist + " km");*/
-var postalMap = L.map("mapPollution").setView([45.64325, 5.8720], 5);
+var postalMap = L.map("mapPollution").setView([45.583843, 5.907417], 5);
 
 var data = [];
 
