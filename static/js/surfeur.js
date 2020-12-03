@@ -1,4 +1,4 @@
-const chambery = [45.64325, 5.8720];
+/*const chambery = [45.64325, 5.8720];
 var postalMap = L.map("mapPollution").setView(chambery, 10);
 
 /*L.circle([lon, lat], {
