@@ -11,6 +11,6 @@ app.set("view engine", "ejs");
 new (require("./helper/service"))(app, express, path);
 
 // starting server
-server.listen(process.env.PORT || 8000, () => {
-    console.log("Server is now listening...");
+server.listen(process.env.PORT, () => {
+    console.log(`Server is now listening on port ${process.env.PORT}...`);
 });
