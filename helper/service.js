@@ -1,5 +1,6 @@
 module.exports = class {
 
+
     constructor(app, express, path) {
         this._app = app;
         this._express = express;
@@ -16,6 +17,13 @@ module.exports = class {
         // home route
         this._app.get("/", (req, res) => {
             res.render("index");
+        });
+
+        // user submit form
+        this._app.post("/submit", (req, res) => {
+            if (!req.body) return res.sendStatus(400);
+            
+            res.redirect("/");
         });
 
     }

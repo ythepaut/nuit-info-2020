@@ -1,39 +1,39 @@
 <%- include('header') %>
 
-<form class="container-fluid">
+<form class="container-fluid" method="POST" action="/submit">
     <fieldset>
         <legend>Rapport</legend>
 
         <div class="form-group row">
             <div class="col-lg-2">
-                <input class="form-control" id="firstName" placeholder="Prénom">
+                <input class="form-control" type="text" name="firstName" placeholder="Prénom">
             </div>
             <div class="col-lg-2">
-                <input class="form-control" id="lastName" placeholder="Nom">
+                <input class="form-control" type="text" name="lastName" placeholder="Nom">
             </div>
         </div>
 
         <div class="form-group row">
             <div class="col-lg-2">
-                <input class="form-control" id="city" placeholder="Ville">
+                <input class="form-control" type="text" name="city" placeholder="Ville">
             </div>
             <div class="col-lg-2">
-                <input class="form-control" id="spot" placeholder="Spot">
+                <input class="form-control" type="text" name="spot" placeholder="Spot">
             </div>
         </div>
 
         <div class="form-group row">
             <div class="col-lg-2">
                 <label for="date">Date</label>
-                <input class="form-control" type="date" id="date" placeholder="Date">
+                <input class="form-control" type="date" name="date" placeholder="Date">
             </div>
             <div class="col-lg-1">
                 <label for="start">Début</label>
-                <input class="form-control" type="time" id="start" placeholder="Début">
+                <input class="form-control" type="time" name="start" placeholder="Début">
             </div>
             <div class="col-lg-1">
                 <label for="end">Fin</label>
-                <input class="form-control" type="time" id="end" placeholder="Fin">
+                <input class="form-control" type="time" name="end" placeholder="Fin">
             </div>
         </div>
 
@@ -46,7 +46,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-1">
-                    <input class="form-control" type="number" min="0" max="1000" id="swimmers" placeholder="Baigneurs">
+                    <input class="form-control" type="number" min="0" max="1000" name="swimmerNumber" placeholder="Baigneurs">
                 </div>
             </div>
             <div class="row">
@@ -56,7 +56,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-1">
-                    <input class="form-control" type="number" min="0" max="1000" id="practitioners" placeholder="Pratiquants">
+                    <input class="form-control" type="number" min="0" max="1000" name="practitionerNumber" placeholder="Pratiquants">
                 </div>
             </div>
             <div class="row">
@@ -66,7 +66,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-1">
-                    <input class="form-control" type="number" min="0" max="1000" id="boats" placeholder="Bateaux">
+                    <input class="form-control" type="number" min="0" max="1000" name="boatNumber" placeholder="Bateaux">
                 </div>
             </div>
 
@@ -81,20 +81,18 @@
             </div>
             <div class="row">
                 <div class="col-lg-1">
-                    <input class="form-control" type="number" min="0" max="10" id="pollutionNumber" placeholder="/10">
+                    <input class="form-control" type="number" min="0" max="10" name="pollutionNumber" placeholder="/10">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4">
                     <label for="Description de la pollution">Example textarea</label>
-                    <textarea class="form-control" id="pollutionText" rows="3"></textarea>
+                    <textarea class="form-control" name="pollutionText" rows="3"></textarea>
                 </div>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-
     </fieldset>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 <%- include('footer') %>
