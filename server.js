@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 
 // setting routes
-new (require("./helper/service"))(app, express, path);
+require("./helper/db")((client) => {
+    new (require("./helper/service"))(app, express, path, client);
+});
 
 // starting server
 server.listen(process.env.PORT || 80, () => {
