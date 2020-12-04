@@ -55,6 +55,9 @@ var markMap = function(url, map) {
 }
 
 markMap("http://nuitinfo2020.ythepaut.com:8001/api/pollution", postalMap);
+postalMap.eachLayer(function (layer) {
+    layer.bindPopup("Emplacement: ");
+});
 markMap("http://nuitinfo2020.ythepaut.com:8001/api/rapport", rapportMap);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
