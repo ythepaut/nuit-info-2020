@@ -14,6 +14,15 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     .bindPopup("Emplacement: " + item.postal + ", " + item.count + " personnes, " + dist + " km");*/
 var postalMap = L.map("mapPollution").setView([45.583843, 5.907417], 5);
 
+L.circle([45.583843, 5.907417], {
+    color: "#ff0000",
+    fillColor: "#ff0000",
+    fillOpacity: 0.5,
+    radius: 5
+})
+    .addTo(postalMap)
+    .bindPopup("Emplacement: ");
+
 var data = [];
 
 for (elt in data) {
