@@ -1,6 +1,7 @@
 let http = require("http"),
     express = require("express"),
     path = require("path"),
+    https = require("https"),
     bodyParser = require('body-parser');
 let app = express(),
     server = http.createServer(app);
@@ -13,7 +14,7 @@ app.set("view engine", "ejs");
 
 // setting routes
 require("./helper/db")((client) => {
-    new (require("./helper/service"))(app, express, path, client);
+    new (require("./helper/service"))(app, express, path, client, https);
 });
 
 // starting server
