@@ -142,6 +142,10 @@ module.exports = class {
             res.render("index");
         });
 
+        this._app.get("/stats", (req, res) => {
+            res.render("stats");
+        });
+
         // user submit form
         this._app.post("/submit", (req, res) => {
             if (!req.body) return res.sendStatus(400);
