@@ -1,8 +1,12 @@
 let http = require("http"),
     express = require("express"),
-    path = require("path");
+    path = require("path"),
+    bodyParser = require('body-parser');
 let app = express(),
     server = http.createServer(app);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // setting view engine
 app.set("view engine", "ejs");
