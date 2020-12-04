@@ -15,14 +15,14 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 var postalMap = L.map("mapPollution").setView([45.583843, 5.907417], 5);
 var rapportMap = L.map("mapRapport").setView([45.583843, 5.907417], 5);
 
-L.circle([45.583843, 5.907417], {
+/*L.circle([45.583843, 5.907417], {
     color: "#ff0000",
     fillColor: "#ff0000",
     fillOpacity: 0.5,
     radius: 5
 })
     .addTo(postalMap)
-    .bindPopup("Fromage");
+    .bindPopup("Fromage");*/
 
 var markMap = function(url, map, str, pointColor) {
     var xmlhttp = new XMLHttpRequest();
@@ -43,7 +43,7 @@ var markMap = function(url, map, str, pointColor) {
                     color: pointColor,
                     fillColor: pointColor,
                     fillOpacity: 0.5,
-                    radius: (data[i].value/max)*25
+                    radius: (data[i].value/max)*75
                 })
                     .addTo(map)
                     .bindPopup(str + data[i].value);
