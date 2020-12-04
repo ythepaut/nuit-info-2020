@@ -57,7 +57,41 @@ module.exports = class {
                     for (let i in data) {
                         if (data[i]._id) {
                             req._my_utils.getCoordinates(req._my_https, data[i]._id, (coordinates) => {
-                                result.push({_id : (coordinates != null) ? coordinates : [0,0], value: data[i].value});
+                                result.push({_id : (coordinates != null) ? coordinates : [0,0], value: parseInt(data[i].value)});
+                                if (result.length === data.length) {
+                                    res.send(JSON.stringify(result));
+                                }
+                            });
+                        } else {
+                            result.push({_id : [0,0], value: data[i].value});
+                        }
+                    }
+
+                }
+            );
+        });
+
+        this._app.use("/api/rapport", (req, res) => {
+            req._my_https = this._https;
+            req._my_utils = this._utils;
+
+            this._db.collection("sondage").mapReduce(
+                function() {
+                    emit(this["city"], 1);
+                },
+                function(key, values) {
+                    return Array.sum(values);
+                },
+                {
+                    out: {inline: 1}
+                },
+                function(err, data) {
+
+                    let result = [];
+                    for (let i in data) {
+                        if (data[i]._id) {
+                            req._my_utils.getCoordinates(req._my_https, data[i]._id, (coordinates) => {
+                                result.push({_id : (coordinates != null) ? coordinates : [0,0], value: parseInt(data[i].value)});
                                 if (result.length === data.length) {
                                     res.send(JSON.stringify(result));
                                 }
