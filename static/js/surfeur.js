@@ -24,7 +24,7 @@ L.circle([45.583843, 5.907417], {
     .addTo(postalMap)
     .bindPopup("Fromage");
 
-var markMap = function(url, map) {
+var markMap = function(url, map, str) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -44,8 +44,8 @@ var markMap = function(url, map) {
                     fillOpacity: 0.5,
                     radius: (data[i].value/max)*25
                 })
-                    .addTo(map);
-                    //.bindPopup("Emplacement: ");
+                    .addTo(map)
+                    .bindPopup(str + data[i].value);
             }
 
         }
@@ -54,11 +54,11 @@ var markMap = function(url, map) {
     xmlhttp.send();
 }
 
-markMap("http://nuitinfo2020.ythepaut.com:8001/api/pollution", postalMap);
-postalMap.eachLayer(function (layer) {
+markMap("http://nuitinfo2020.ythepaut.com:8001/api/pollution", postalMap, "Pollution : ");
+/*postalMap.eachLayer(function (layer) {
     layer.bindPopup("Emplacement: ");
-});
-markMap("http://nuitinfo2020.ythepaut.com:8001/api/rapport", rapportMap);
+});*/
+markMap("http://nuitinfo2020.ythepaut.com:8001/api/rapport", rapportMap, "Nombre d'utilisateurs : ");
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
