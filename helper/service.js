@@ -115,6 +115,10 @@ module.exports = class {
 
         // home route
         this._app.get("/", (req, res) => {
+            res.render("surfeur");
+        });
+
+        this._app.get("/formulaire", (req, res) => {
             res.render("index");
         });
 
