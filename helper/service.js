@@ -1,16 +1,77 @@
 module.exports = class {
 
 
-    constructor(app, express, path, db) {
+    constructor(app, express, path, db, _https) {
         this._app = app;
         this._express = express;
         this._path = path;
         this._db = db;
-        this.initializeRoutes();
+        this._https = _https;
+        this._initializeRoutes();
+        this._initializeAPIRoutes();
+        this._utils = require("./utils");
+    }
+
+    _genericMapReduce(attribute, callback) {
+        this._db.collection("sondage").mapReduce(
+            function() {
+                if (this[attribute] !== undefined && this[attribute] !== null)
+                    emit(this[attribute], 1);
+            },
+            function(key, values) {
+                return Array.sum(values);
+            },
+            {out: {inline: 1}},
+            function(err, data) {
+                callback(data);
+            }
+        );
     }
 
 
-    initializeRoutes() {
+    _initializeAPIRoutes() {
+
+        this._app.use("/api/genericsum/:attribute", (req, res) => {
+            this._genericMapReduce(req.params.attribute, (data) => {
+                res.send(JSON.stringify(data));
+            });
+        });
+
+        this._app.use("/api/pollution", (req, res) => {
+            this._db.collection("sondage").mapReduce(
+                function() {
+                    emit(this["city"], this["pollution_rate"]);
+                },
+                function(key, values) {
+                    return Array.sum(values)/values.length;
+                },
+                {
+                    out: {inline: 1}
+                },
+                function(err, data) {
+
+                    let result = [];
+                    for (let i in data) {
+                        if (data[i]._id) {
+                            this._utils.getCoordinates(this._https, data[i]._id, (coordinates) => {
+                                result.push({_id : (coordinates != null) ? coordinates : [0,0]});
+                                if (result.length === data.length) {
+                                    res.send(JSON.stringify(result));
+                                }
+                            });
+                        } else {
+                            result.push({_id : [0,0], value: data[i].value});
+                        }
+                    }
+
+                }
+            );
+        });
+
+    }
+
+
+    _initializeRoutes() {
 
         // setting static folder
         this._app.use(this._express.static(this._path.join(__dirname, "../static")));
@@ -24,7 +85,7 @@ module.exports = class {
         this._app.post("/submit", (req, res) => {
             if (!req.body) return res.sendStatus(400);
 
-            // made to be sure that every fiel does exist and
+            // made to be sure that every field does exist and
             // aren't modified by client.
             if (req.body.lastName &&
                 req.body.firstName &&
