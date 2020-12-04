@@ -57,7 +57,7 @@ module.exports = class {
                     for (let i in data) {
                         if (data[i]._id) {
                             req._my_utils.getCoordinates(req._my_https, data[i]._id, (coordinates) => {
-                                result.push({_id : (coordinates != null) ? coordinates : [0,0]});
+                                result.push({_id : (coordinates != null) ? coordinates : [0,0], value: data[i].value});
                                 if (result.length === data.length) {
                                     res.send(JSON.stringify(result));
                                 }
