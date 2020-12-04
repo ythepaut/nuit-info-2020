@@ -1,11 +1,15 @@
 <%- include('header') %>
 
-<%- include('surfeur') %>
-<!--<form class="container-fluid" method="POST" action="/submit">
+<form class="container-fluid" method="POST" action="/submit">
     <fieldset>
-        <legend>Rapport</legend>
 
-        <div class="form-group row">
+        <div class="row justify-content-md-center">
+            <div class="col-lg-4">
+                <legend>Envoyer un rapport</legend>
+            </div>
+        </div>
+
+        <div class="form-group row justify-content-md-center">
             <div class="col-lg-2">
                 <input class="form-control" type="text" name="firstName" placeholder="Prénom">
             </div>
@@ -14,7 +18,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row justify-content-md-center">
             <div class="col-lg-2">
                 <input class="form-control" type="text" name="city" placeholder="Ville">
             </div>
@@ -23,7 +27,7 @@
             </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row justify-content-md-center">
             <div class="col-lg-2">
                 <label for="date">Date</label>
                 <input class="form-control" type="date" name="date" placeholder="Date">
@@ -39,61 +43,55 @@
         </div>
 
         <div class="form-group">
-
-            <div class="row">
-                <div class="col-lg-2">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-4">
                     <label for="date">Nombre de baigneurs</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1">
                     <input class="form-control" type="number" min="0" max="1000" name="swimmerNumber" placeholder="Baigneurs">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-2">
+        </div>
+
+        <div class="form-group">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-4">
                     <label for="start">Nombre de pratiquant d'activité</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1">
                     <input class="form-control" type="number" min="0" max="1000" name="practitionerNumber" placeholder="Pratiquants">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-2">
+        </div>
+
+        <div class="form-group">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-4">
                     <label for="end">Nombre de bateaux</label>
+                    <input class="form-control" type="number" min="0" max="1000" name="boatNumber" placeholder="Bateaux">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-1">
-                    <input class="form-control" type="number" min="0" max="1000" name="boatNumber" placeholder="Bateaux">
+        </div>
+
+        <div class="form-group">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-4">
+                    <label for="Description de la pollution">Taux de pollution</label>
+                    <input class="form-control" type="number" min="0" max="10" name="pollutionNumber" placeholder="/10">
                 </div>
             </div>
 
         </div>
-
         <div class="form-group">
-
-            <div class="row">
-                <div class="col-lg-2">
-                    <label for="Description de la pollution">Estimation de taux de pollution</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1">
-                    <input class="form-control" type="number" min="0" max="10" name="pollutionNumber" placeholder="/10">
-                </div>
-            </div>
-            <div class="row">
+            <div class="row justify-content-md-center">
                 <div class="col-lg-4">
-                    <label for="Description de la pollution">Example textarea</label>
+                    <label for="Description de la pollution">Description de la pollution</label>
                     <textarea class="form-control" name="pollutionText" rows="3"></textarea>
                 </div>
             </div>
         </div>
+
+        <div class="row justify-content-md-center">
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+
     </fieldset>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>-->
+</form>
 
 <%- include('footer') %>
