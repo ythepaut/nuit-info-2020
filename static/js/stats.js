@@ -48,7 +48,7 @@ var q3 = function(url, id_graph, type_graph, nom_graph) {
                 series: [{
                     name: 'Déchets',
                     //colorByPoint: true,
-                    color: "#ED4C67",
+                    //color: "#ED4C67",
                     data: tab
                 }]
             });
