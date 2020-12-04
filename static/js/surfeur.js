@@ -42,7 +42,7 @@ var markMap = function(url, map, str) {
                     color: "#ff0000",
                     fillColor: "#ff0000",
                     fillOpacity: 0.5,
-                    radius: (data[i].value/max)*25
+                    radius: 25//(data[i].value/max)*25
                 })
                     .addTo(map)
                     .bindPopup(str + data[i].value);
