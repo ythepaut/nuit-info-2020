@@ -59,7 +59,7 @@ markMap("http://nuitinfo2020.ythepaut.com:8004/api/pollution", postalMap, "Pollu
 /*postalMap.eachLayer(function (layer) {
     layer.bindPopup("Emplacement: ");
 });*/
-markMap("http://nuitinfo2020.ythepaut.com:8004/api/genericsum/_id", rapportMap, "Nombre de rapports : ");
+markMap("http://nuitinfo2020.ythepaut.com:8004/api/genericsum/city", rapportMap, "Nombre de rapports : ");
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
