@@ -29,11 +29,11 @@ var markMap = function(url, map, str) {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
-            var max = parseInt(data[0].value);
+            var max = data[0].value;
 
             for (var i = 1; i < data.length; i++) {
                 if (data[i].value > max) {
-                    max = parseInt(data[i].value);
+                    max = data[i].value;
                 }
             }
 
@@ -43,7 +43,7 @@ var markMap = function(url, map, str) {
                     color: "#ff0000",
                     fillColor: "#ff0000",
                     fillOpacity: 0.5,
-                    radius: (parseInt(data[i].value)/max)*25
+                    radius: (data[i].value/max)*25
                 })
                     .addTo(map)
                     .bindPopup(str + data[i].value);
