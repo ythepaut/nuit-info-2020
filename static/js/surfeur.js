@@ -54,11 +54,11 @@ var markMap = function(url, map, str) {
     xmlhttp.send();
 }
 
-markMap("http://nuitinfo2020.ythepaut.com:8001/api/pollution", postalMap, "Pollution : ");
+markMap("http://nuitinfo2020.ythepaut.com:8004/api/pollution", postalMap, "Pollution : ");
 /*postalMap.eachLayer(function (layer) {
     layer.bindPopup("Emplacement: ");
 });*/
-markMap("http://nuitinfo2020.ythepaut.com:8001/api/rapport", rapportMap, "Nombre d'utilisateurs : ");
+markMap("http://nuitinfo2020.ythepaut.com:8004/api/rapport", rapportMap, "Nombre d'utilisateurs : ");
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>"
