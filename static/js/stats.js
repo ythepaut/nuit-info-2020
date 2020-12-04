@@ -32,7 +32,7 @@ var q3 = function(url, id_graph, type_graph, nom_graph) {
                 },
                 yAxis: {
                     title: {
-                        text: "Nombre de participants"
+                        text: "Nombre de déchets"
                     }
                 },
                 plotOptions: {
@@ -46,7 +46,7 @@ var q3 = function(url, id_graph, type_graph, nom_graph) {
                     }
                 },
                 series: [{
-                    name: 'Étudiants',
+                    name: 'Déchets',
                     //colorByPoint: true,
                     color: "#ED4C67",
                     data: tab
