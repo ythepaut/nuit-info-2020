@@ -38,6 +38,7 @@ var markMap = function(url, map, str) {
             }
 
             for (var i = 0; i < data.length; i++) {
+                console.log(data[i]);
                 L.circle(data[i]._id, {
                     color: "#ff0000",
                     fillColor: "#ff0000",
