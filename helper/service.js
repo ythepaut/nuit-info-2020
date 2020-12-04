@@ -37,6 +37,26 @@ module.exports = class {
             });
         });
 
+        this._app.use("/api/report/years", (req, res) => {
+            this._db.collection("report").mapReduce(
+                function() {
+                    emit(parseInt(this["created_at"].substring(0, 4)), this["quantity"]);
+                },
+                function(key, values) {
+                    return Array.sum(values);
+                },
+                {
+                    out: {inline: 1}
+                },
+                function(err, data) {
+                    if (err)
+                        console.log(err);
+                    else
+                        res.send(JSON.stringify(data));
+                }
+            );
+        });
+
         this._app.use("/api/pollution", (req, res) => {
             req._my_https = this._https;
             req._my_utils = this._utils;
@@ -115,7 +135,15 @@ module.exports = class {
 
         // home route
         this._app.get("/", (req, res) => {
+            res.render("surfeur");
+        });
+
+        this._app.get("/formulaire", (req, res) => {
             res.render("index");
+        });
+
+        this._app.get("/stats", (req, res) => {
+            res.render("stats");
         });
 
         // user submit form
